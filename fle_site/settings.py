@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'fack',
     'jsonify',
     'south',
+    'tinymce',
     'file_resubmit',
     'fle_site.apps.articles',
     'fle_site.apps.main',
@@ -199,3 +200,14 @@ CACHES = {
         "LOCATION": '/tmp/file_resubmit/'
     },
 }
+
+# TINY MCE
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'modern',
+    'relative_urls': False,
+    'plugins': 'code, image, table',
+    'tools': 'inserttable',
+    'file_browser_callback': 'myFileBrowser',
+}
+

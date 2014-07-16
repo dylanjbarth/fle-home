@@ -7,4 +7,5 @@ urlpatterns = patterns(__package__ + '.views',
     url(r'^map/$', RedirectView.as_view(url=reverse_lazy('map'))),
     url(r'^give/$', TemplateView.as_view(template_name='main/give.html'), name='give'),
     url(r'^directions/$', TemplateView.as_view(template_name='main/directions.html'), name='directions'),
+    url(r'^tinymce/', include('tinymce.urls')),
 )

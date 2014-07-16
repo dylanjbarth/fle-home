@@ -4,6 +4,8 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from models import Article, Tag
 
+from tinymce.widgets import TinyMCE
+
 log = logging.getLogger('articles.forms')
 
 def tag(name):
@@ -23,6 +25,8 @@ def tag(name):
 
 class ArticleAdminForm(forms.ModelForm):
 
+
+
     def __init__(self, *args, **kwargs):
         """Sets the list of tags to be a string"""
 
@@ -35,15 +39,18 @@ class ArticleAdminForm(forms.ModelForm):
 
     class Meta:
         model = Article
+        widgets = {
+            'content': TinyMCE(attrs={'cols': 80, 'rows': 20})
+        }
 
     class Media:
         css = {
-            'all': ('/css/jquery.autocomplete.css',),
+            'all': ('css/jquery.autocomplete.css',),
         }
         js = (
-            '/js/jquery-1.4.1.min.js',
-            '/js/jquery.bgiframe.min.js',
-            '/js/jquery.autocomplete.pack.js',
-            '/js/tag_autocomplete.js',
+            'js/jquery-1.4.1.min.js',
+            'js/jquery.bgiframe.min.js',
+            'js/jquery.autocomplete.pack.js',
+            'js/tag_autocomplete.js',
         )
 
